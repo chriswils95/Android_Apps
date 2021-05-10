@@ -20,6 +20,6 @@ The Family Map Android application consists of five main views:
 
 # Some Screenshots From the App
 ![Screenshot](../../screenshot1.png)
-![Screenshot](../../screenshot2.png)
-![Screenshot](../../screenshoot3.png)
+![Screenshot](../../screenshoot2.png)
+![Screenshot](../../screenshot3.png)
 ![Screenshot](../../screenshoot4.png)
