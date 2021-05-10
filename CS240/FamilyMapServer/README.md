@@ -17,3 +17,6 @@ The Family Map Android application consists of five main views:
 # The Family Map Client application uses two external services:
 * Family Map Server - Used for user management, data generation, and requesting data (this is the Family Map Server you created in the previous project)
 * Google Maps v2 for Android or Amazon Maps v2 for Kindle - Used for displaying maps
+
+# Some Screenshots From the App
+![Screenshot](../../Screen Shot 2021-05-10 at 3.40.49 PM.png)
