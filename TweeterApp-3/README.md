@@ -2,5 +2,5 @@ This is a twitter clone project, it allows users to create an account, make post
 This app is a simplified version of Twitter. It involves both the front end and back end of android app developments. Android studio is used extensively to create 
 the front and back end of the apps.
 
-*** TODO ***
+# TODO ***
  Add screenshoots of the App
