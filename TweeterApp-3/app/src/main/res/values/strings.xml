@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Tweeter</string>
+
+    <string name="homePageTitle">Home</string>
+    <string name="userImageContentDescription">The user\'s image</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="loadingData">Loading More Data…</string>
+    <string name="feedTabTitle">Feed</string>
+    <string name="storyTabTitle">Story</string>
+    <string name="followingTabTitle">Following</string>
+    <string name="followersTabTitle">Followers</string>
+    <string name="loginTitle">Login</string>
+    <string name="registerTitle">Register</string>
+    <string name="sampleAlias">"@UserAlias"</string>
+    <string name="sampleUserName">The User</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="followeeCount">Following: -42</string>
+    <string name="followerCount">Followers: -42</string>
+    <string name="title_activity_test">TestActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="usernameplaceholder">\@username\</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

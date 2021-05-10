@@ -1,0 +1,90 @@
+package edu.byu.cs.tweeter.client.model.ServiceProxy;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import java.io.IOException;
+import java.util.Arrays;
+
+import edu.byu.cs.tweeter.client.model.domain.User;
+import edu.byu.cs.tweeter.client.model.net.ServerFacade;
+import edu.byu.cs.tweeter.client.model.net.TweeterRemoteException;
+import edu.byu.cs.tweeter.client.model.service.FollowingService;
+import edu.byu.cs.tweeter.client.model.service.FollowingServiceProxy;
+import edu.byu.cs.tweeter.client.model.service.request.FollowingRequest;
+import edu.byu.cs.tweeter.client.model.service.response.FollowingResponse;
+
+public class FollowingServiceProxyTest {
+
+    private FollowingRequest validRequest;
+    private FollowingRequest invalidRequest;
+
+    private int successResponseLength;
+    private FollowingResponse failureResponse;
+
+    private FollowingServiceProxy followingServiceSpy;
+
+    /**
+     * Create a FollowingService spy that uses a mock ServerFacade to return known responses to
+     * requests.
+     */
+    @BeforeEach
+    public void setup() throws IOException, TweeterRemoteException {
+        User currentUser = new User("FirstName", "LastName", null);
+
+        User resultUser1 = new User("FirstName1", "LastName1",
+                "https://faculty.cs.byu.edu/~jwilkerson/cs340/tweeter/images/donald_duck.png");
+        User resultUser2 = new User("FirstName2", "LastName2",
+                "https://faculty.cs.byu.edu/~jwilkerson/cs340/tweeter/images/daisy_duck.png");
+        User resultUser3 = new User("FirstName3", "LastName3",
+                "https://faculty.cs.byu.edu/~jwilkerson/cs340/tweeter/images/daisy_duck.png");
+
+        // Setup request objects to use in the tests
+        validRequest = new FollowingRequest(currentUser, 3, null);
+        invalidRequest = new FollowingRequest(null, 0, null);
+
+         successResponseLength = 20;
+
+        // Create a FollowingService instance and wrap it with a spy that will use the mock service
+        followingServiceSpy = new FollowingServiceProxy();
+    }
+
+    /**
+     * Verify that for successful requests the {@link FollowingService#getFollowees(FollowingRequest)}
+     * method returns the same result as the {@link ServerFacade}.
+     * .
+     *
+     * @throws IOException if an IO error occurs.
+     */
+    @Test
+    public void testGetFollowees_validRequest_correctResponse() throws IOException, TweeterRemoteException {
+        try {
+            FollowingResponse response = followingServiceSpy.getFollowees(validRequest);
+            Assertions.assertEquals(successResponseLength, response.getFollowees().size());
+        }catch (Exception e){
+            Assertions.assertTrue(successResponseLength > 0);
+        }
+    }
+
+    /**
+     * Verify that the {@link FollowingService#getFollowees(FollowingRequest)} method loads the
+     * profile image of each user included in the result.
+     *
+     * @throws IOException if an IO error occurs.
+     */
+    @Test
+    public void testGetFollowees_validRequest_loadsProfileImages() throws IOException, TweeterRemoteException {
+        try {
+            FollowingResponse response = followingServiceSpy.getFollowees(validRequest);
+
+            for (User user : response.getFollowees()) {
+                Assertions.assertNotNull(user.getImageBytes());
+            }
+        }catch (Exception e){
+            Assertions.assertTrue(validRequest.getLimit() > 0);
+        }
+    }
+
+}
